@@ -1,0 +1,16 @@
+{
+  "name": "flac2mp3",
+  "version": "1.0.0",
+  "description": "convert music files from FLAC to MP3",
+  "main": "flac2mp3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dokoto.moloko@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.1.1",
+    "shelljs": "^0.7.4",
+    "underscore": "^1.8.3"
+  }
+}
