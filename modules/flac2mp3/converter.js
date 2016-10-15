@@ -4,12 +4,17 @@ const glob = require('glob');
 const path = require('path');
 const _ = require('underscore');
 const sh = require('shelljs');
+const fs = require('fs');
 
-class Converter {
+class Converter_flac2mp3 {
     constructor(options) {
         this.args = {};
-        this.ffmpeg = 'ffmpeg -i "<%= filePath %>" -f mp3 -ab 192000 "<%= folderPath %><%= fileName %>.<%= fileExtTo %>" 2> /dev/null';
-        this.delete = 'rm -rf "<%= folderPath %><%= fileName %>.<%= fileExtFrom %>"';
+        this.ffmpeg = fs.readFileSync(__dirname + '/templates/flac2mp3.sh', {
+            encoding: 'utf8'
+        });
+        this.delete = fs.readFileSync(__dirname + '/templates/delete.sh', {
+            encoding: 'utf8'
+        });
     }
 
     start() {
@@ -18,17 +23,17 @@ class Converter {
         }
     }
 
-    _validation() {
-        if (process.argv.length <= 2) {
-            console.log('Use: flac2mp3 [folder path] [modificators]');
-            console.log('-delete: Delete flac files before it\'ve been converted');
-            console.log('-test: No convert and not delete only testing');
-            console.log('-verbose: Full logs');
-            console.log('$> flac2mp3 /Users/paco/flacFilesForlder');
-            return false;
-        }
+    _help() {
+      console.log('Use: mconv flac2mp3 [folder path] [modificators]');
+      console.log('-delete: Delete flac files before it\'ve been converted');
+      console.log('-test: No convert and not delete only testing');
+      console.log('-verbose: Full logs');
+      console.log('$> mconv flac2mp3 /Users/paco/flacFilesForlder');
+      return false;
+    }
 
-        this.args.folderPath = process.argv[2];
+    _validation() {
+        this.args.folderPath = process.argv[3];
         if (process.argv.indexOf('-delete') !== -1) {
             this.args.deleteFlac = true;
         }
@@ -62,11 +67,11 @@ class Converter {
             fileExtTo: 'mp3'
         };
         args.fileName = args.fileName.substr(0, args.fileName.lastIndexOf('.'));
-        console.log('[FLAC CONVERTER] Converting "%s"', args.fileName);
+        console.log('[FLAC2MP3 CONVERTER] Converting "%s"', args.fileName);
         this._execCommad(cmdFFMPEG(args));
         if (this.args.deleteFlac) {
             if (this.delete.indexOf('*') !== -1) {
-                console.error('[FLAC CONVERTER] * are forbiden');
+                console.error('[FLAC2MP3 CONVERTER] * are forbiden');
             } else {
                 //console.log('[FLAC CONVERTER] Deleting "%s"', args.fileName);
                 this._execCommad(cmdDELETE(args));
@@ -75,7 +80,7 @@ class Converter {
     }
 
     _processFiles(error, files) {
-        console.log('[FLAC CONVERTER] %d flac files to be converted', files.length);
+        console.log('[FLAC2MP3 CONVERTER] %d flac files to be converted', files.length);
 
         let filePath, fileName, cmdFFMPEG, cmdDELETE;
         cmdFFMPEG = _.template(this.ffmpeg);
@@ -88,4 +93,4 @@ class Converter {
     }
 }
 
-new Converter().start();
+module.exports = Converter_flac2mp3;

@@ -1,14 +1,16 @@
 {
   "name": "mconv",
   "version": "1.0.0",
-  "description": "convert media files",
-  "main": "mconv.js",
+  "description": "[MCONV MODULE] Convert flac files to mp3",
+  "main": "converter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dokoto.moloko@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "glob": "^7.1.1"
+    "glob": "^7.1.1",
+    "shelljs": "^0.7.4",
+    "underscore": "^1.8.3"
   }
 }
