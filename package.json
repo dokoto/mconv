@@ -1,6 +1,6 @@
 {
     "name": "mconv",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Convert media files",
     "main": "./lib/mconv.js",
     "preferGlobal": "true",
