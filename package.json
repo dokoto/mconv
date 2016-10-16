@@ -1,15 +1,19 @@
 {
-  "name": "mconv",
-  "version": "0.0.1",
-  "description": "Convert media files",
-  "main": "mconv.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "manuel.alfaro.sierra@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "glob": "^7.1.1",
-    "mconv_mod_flac2mp3": "^1.0.1"
-  }
+    "name": "mconv",
+    "version": "0.0.2",
+    "description": "Convert media files",
+    "main": "./lib/mconv.js",
+    "preferGlobal": "true",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "mconv": "bin/mconvjs"
+    },
+    "author": "manuel.alfaro.sierra@gmail.com",
+    "license": "ISC",
+    "dependencies": {
+        "glob": "^7.1.1",
+        "mconv_mod_flac2mp3": "^1.0.1"
+    }
 }
