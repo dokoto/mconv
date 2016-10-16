@@ -1,14 +1,15 @@
 {
   "name": "mconv",
-  "version": "1.0.0",
-  "description": "convert media files",
+  "version": "0.0.1",
+  "description": "Convert media files",
   "main": "mconv.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "dokoto.moloko@gmail.com",
+  "author": "manuel.alfaro.sierra@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "glob": "^7.1.1"
+    "glob": "^7.1.1",
+    "mconv_mod_flac2mp3": "^1.0.1"
   }
 }
