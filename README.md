@@ -3,8 +3,9 @@
 ##Como usarlo:
 
 1º Hay que instalar mconv 
+``` bash
 $> npm i mconv -g
-
+```
 2º Hay que instalar uno de los modulos de conversion como "mconv_mod_flac2mp3"
 $> npm i mconv_mod_flac2mp3 -g
 
